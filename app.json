@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Ellatech Inventory",
+    "slug": "ellatech-inventory",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#4f46e5"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#4f46e5"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1c420f5c-bbf7-4c47-804f-79089b92edf5"
+      }
+    },
+    "owner": "muay01111",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1c420f5c-bbf7-4c47-804f-79089b92edf5"
+    }
+  }
+}
