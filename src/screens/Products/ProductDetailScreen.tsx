@@ -5,9 +5,9 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Alert,
 } from "react-native";
 import { useApp } from "../../context/AppContext";
+import { showAlert } from "../../utils/alert";
 import type { TransactionType } from "../../types";
 
 interface Props {
@@ -54,15 +54,15 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
   const handleAdjust = () => {
     const qty = parseInt(adjustQty, 10);
     if (!adjustQty.trim() || isNaN(qty) || qty <= 0) {
-      Alert.alert("\u{26A0}\uFE0F Invalid Input", "Enter a quantity greater than 0");
+      showAlert("\u{26A0}\uFE0F Invalid Input", "Enter a quantity greater than 0");
       return;
     }
     const result = adjustStock(productId, adjustType, qty);
     if (!result.success) {
-      Alert.alert("\u{274C} Error", result.error ?? "Failed to adjust stock");
+      showAlert("\u{274C} Error", result.error ?? "Failed to adjust stock");
       return;
     }
-    Alert.alert(
+    showAlert(
       "\u{2705} Stock Updated",
       `${adjustType === "add" ? "Added" : "Removed"} ${qty} unit${qty > 1 ? "s" : ""} successfully`,
     );

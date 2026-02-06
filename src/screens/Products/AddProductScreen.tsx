@@ -5,11 +5,11 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Alert,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import { useApp } from "../../context/AppContext";
+import { showAlert } from "../../utils/alert";
 
 interface Props {
   onBack: () => void;
@@ -40,10 +40,10 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
 
     if (!result.success) { setError(result.error ?? "Failed to add product"); return; }
 
-    Alert.alert(
+    showAlert(
       "\u{2705} Product Added",
       `"${name.trim()}" has been added to your inventory.`,
-      [{ text: "OK", onPress: onBack }],
+      onBack,
     );
   };
 

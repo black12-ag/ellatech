@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useApp } from "../../context/AppContext";
+import { showConfirm } from "../../utils/alert";
 
 interface Props {
   onLogout: () => void;
@@ -10,10 +11,12 @@ export const ProfileScreen: React.FC<Props> = ({ onLogout }) => {
   const { user, products, transactions } = useApp();
 
   const handleLogout = () => {
-    Alert.alert("\u{1F6AA} Log Out", "Are you sure you want to log out?", [
-      { text: "Cancel", style: "cancel" },
-      { text: "Log Out", style: "destructive", onPress: onLogout },
-    ]);
+    showConfirm(
+      "\u{1F6AA} Log Out",
+      "Are you sure you want to log out?",
+      onLogout,
+      "Log Out",
+    );
   };
 
   const formatDate = (iso: string) =>
