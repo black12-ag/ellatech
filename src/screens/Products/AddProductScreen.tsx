@@ -40,9 +40,11 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
 
     if (!result.success) { setError(result.error ?? "Failed to add product"); return; }
 
-    Alert.alert("Product Added", `"${name.trim()}" has been added to your inventory.`, [
-      { text: "OK", onPress: onBack },
-    ]);
+    Alert.alert(
+      "\u{2705} Product Added",
+      `"${name.trim()}" has been added to your inventory.`,
+      [{ text: "OK", onPress: onBack }],
+    );
   };
 
   return (
@@ -62,7 +64,8 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
             activeOpacity={0.7}
             className="flex-row items-center mb-3"
           >
-            <Text className="text-indigo-200 text-base font-semibold">{"<-"} Back</Text>
+            <Text className="text-lg mr-1">{"\u{2190}"}</Text>
+            <Text className="text-indigo-200 text-base font-semibold">Back</Text>
           </TouchableOpacity>
           <Text className="text-white text-2xl font-extrabold">Add Product</Text>
           <Text className="text-indigo-200 text-sm mt-1 font-medium">
@@ -74,7 +77,7 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
         <View className="px-5 pt-6">
           {error && (
             <View className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-5 flex-row items-center">
-              <Text className="text-red-500 font-bold mr-2">!</Text>
+              <Text className="text-lg mr-2">{"\u{26A0}\uFE0F"}</Text>
               <Text className="text-red-600 text-sm flex-1 font-medium">{error}</Text>
             </View>
           )}
@@ -128,10 +131,11 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
 
           {/* Submit */}
           <TouchableOpacity
-            className="bg-indigo-600 rounded-2xl py-4.5 items-center shadow-lg shadow-indigo-500/30"
+            className="bg-indigo-600 rounded-2xl py-4 items-center flex-row justify-center"
             onPress={handleSubmit}
             activeOpacity={0.85}
           >
+            <Text className="mr-2">{"\u{2795}"}</Text>
             <Text className="text-white font-bold text-lg">Add Product</Text>
           </TouchableOpacity>
 

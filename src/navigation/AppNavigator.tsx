@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Platform } from "react-native";
 import { DashboardScreen } from "../screens/Dashboard/DashboardScreen";
 import { ProductListScreen } from "../screens/Products/ProductListScreen";
 import { AddProductScreen } from "../screens/Products/AddProductScreen";
@@ -13,35 +13,28 @@ type ProductSubScreen = "list" | "add" | { detail: string };
 /* ── Tab bar button ─────────────────────────────────────── */
 const TabButton: React.FC<{
   label: string;
-  icon: string;
+  emoji: string;
   active: boolean;
   onPress: () => void;
-}> = ({ label, icon, active, onPress }) => (
+}> = ({ label, emoji, active, onPress }) => (
   <TouchableOpacity
-    className="flex-1 items-center py-2"
+    className="flex-1 items-center pt-2 pb-1"
     onPress={onPress}
-    activeOpacity={0.7}
+    activeOpacity={0.6}
   >
-    <View
-      className={`w-10 h-10 rounded-xl items-center justify-center mb-0.5 ${
-        active ? "bg-indigo-50" : ""
-      }`}
-    >
-      <Text
-        className={`text-lg font-extrabold ${
-          active ? "text-indigo-600" : "text-slate-300"
-        }`}
-      >
-        {icon}
-      </Text>
-    </View>
+    <Text className={`text-[22px] mb-1 ${active ? "opacity-100" : "opacity-30"}`}>
+      {emoji}
+    </Text>
     <Text
-      className={`text-[10px] font-bold ${
-        active ? "text-indigo-600" : "text-slate-300"
+      className={`text-[10px] font-semibold ${
+        active ? "text-indigo-600" : "text-slate-400"
       }`}
     >
       {label}
     </Text>
+    {active && (
+      <View className="w-1 h-1 rounded-full bg-indigo-600 mt-1" />
+    )}
   </TouchableOpacity>
 );
 
@@ -113,28 +106,31 @@ export const AppNavigator: React.FC<Props> = ({ onLogout }) => {
       <View className="flex-1">{renderScreen()}</View>
 
       {/* Bottom Tab Bar */}
-      <View className="bg-white border-t border-slate-100 flex-row pt-1 pb-7 px-3 shadow-t-lg shadow-slate-200">
+      <View
+        className="bg-white border-t border-slate-100 flex-row px-4"
+        style={{ paddingBottom: Platform.OS === "ios" ? 24 : 12 }}
+      >
         <TabButton
           label="Home"
-          icon="H"
+          emoji={"\u{1F3E0}"}
           active={activeTab === "dashboard"}
           onPress={() => setActiveTab("dashboard")}
         />
         <TabButton
           label="Products"
-          icon="P"
+          emoji={"\u{1F4E6}"}
           active={activeTab === "products"}
           onPress={goProducts}
         />
         <TabButton
           label="History"
-          icon="T"
+          emoji={"\u{1F4CB}"}
           active={activeTab === "history"}
           onPress={goHistory}
         />
         <TabButton
           label="Profile"
-          icon="U"
+          emoji={"\u{1F464}"}
           active={activeTab === "profile"}
           onPress={() => setActiveTab("profile")}
         />

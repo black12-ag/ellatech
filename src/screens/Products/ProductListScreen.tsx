@@ -33,7 +33,7 @@ export const ProductListScreen: React.FC<Props> = ({
 
   const renderItem = ({ item }: { item: Product }) => (
     <TouchableOpacity
-      className="bg-white rounded-2xl p-4 mb-3 mx-5 border border-slate-100 shadow-sm shadow-slate-100 active:scale-[0.98]"
+      className="bg-white rounded-2xl p-4 mb-3 mx-5 border border-slate-100 active:scale-[0.98]"
       onPress={() => onViewProduct(item.id)}
       activeOpacity={0.8}
     >
@@ -67,9 +67,7 @@ export const ProductListScreen: React.FC<Props> = ({
 
   const EmptyList = () => (
     <View className="items-center justify-center pt-24 px-10">
-      <View className="w-20 h-20 rounded-3xl bg-indigo-50 items-center justify-center mb-5">
-        <Text className="text-indigo-400 text-3xl font-extrabold">P</Text>
-      </View>
+      <Text className="text-6xl mb-5">{"\u{1F4E6}"}</Text>
       <Text className="text-slate-900 text-xl font-extrabold text-center">
         No Products Yet
       </Text>
@@ -77,11 +75,12 @@ export const ProductListScreen: React.FC<Props> = ({
         Add your first product to start{"\n"}tracking your inventory
       </Text>
       <TouchableOpacity
-        className="bg-indigo-600 rounded-2xl px-8 py-3.5 mt-6 shadow-lg shadow-indigo-500/30"
+        className="bg-indigo-600 rounded-2xl px-8 py-3.5 mt-6 flex-row items-center"
         onPress={onAddProduct}
         activeOpacity={0.85}
       >
-        <Text className="text-white font-bold text-sm">+ Add Product</Text>
+        <Text className="mr-2">{"\u{2795}"}</Text>
+        <Text className="text-white font-bold text-sm">Add Product</Text>
       </TouchableOpacity>
     </View>
   );
@@ -93,17 +92,18 @@ export const ProductListScreen: React.FC<Props> = ({
         <View className="flex-row items-center justify-between mb-4">
           <Text className="text-white text-2xl font-extrabold">Products</Text>
           <TouchableOpacity
-            className="bg-white rounded-xl px-5 py-2.5 shadow-sm shadow-black/10"
+            className="bg-white rounded-xl px-5 py-2.5 flex-row items-center"
             onPress={onAddProduct}
             activeOpacity={0.85}
           >
-            <Text className="text-indigo-600 font-bold text-sm">+ Add</Text>
+            <Text className="mr-1.5">{"\u{2795}"}</Text>
+            <Text className="text-indigo-600 font-bold text-sm">Add</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Search Bar - properly sized */}
+        {/* Search Bar */}
         <View className="flex-row items-center bg-white/15 rounded-2xl px-4">
-          <Text className="text-white/50 mr-3 font-bold">Q</Text>
+          <Text className="mr-3 text-base">{"\u{1F50D}"}</Text>
           <TextInput
             className="flex-1 py-3.5 text-base text-white"
             placeholder="Search by name or SKU..."
@@ -113,7 +113,7 @@ export const ProductListScreen: React.FC<Props> = ({
           />
           {search.length > 0 && (
             <TouchableOpacity onPress={() => setSearch("")}>
-              <Text className="text-white/50 font-bold text-lg">x</Text>
+              <Text className="text-white/50 font-bold text-lg">{"\u{2715}"}</Text>
             </TouchableOpacity>
           )}
         </View>

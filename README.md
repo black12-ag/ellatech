@@ -4,11 +4,16 @@ A React Native (Expo + NativeWind) inventory management app that simulates user 
 
 ## Live Demo
 
-> **Scan with Expo Go** to run the app on your phone:
+> **Run the app directly in your browser or on your phone:**
+
+| Platform | Link |
+|----------|------|
+| **Web App** | [https://black12-ag.github.io/ellatech](https://black12-ag.github.io/ellatech) |
+| **Expo Dashboard** | [https://expo.dev/accounts/muay01111/projects/ellatech-inventory](https://expo.dev/accounts/muay01111/projects/ellatech-inventory) |
+| **GitHub Repo** | [https://github.com/black12-ag/ellatech](https://github.com/black12-ag/ellatech) |
 
 [![Expo Project](https://img.shields.io/badge/Expo-Run%20on%20Device-4630EB?logo=expo&logoColor=white)](https://expo.dev/accounts/muay01111/projects/ellatech-inventory)
-
-**Expo Dashboard:** https://expo.dev/accounts/muay01111/projects/ellatech-inventory
+[![GitHub](https://img.shields.io/badge/GitHub-Source%20Code-181717?logo=github&logoColor=white)](https://github.com/black12-ag/ellatech)
 
 ---
 
@@ -65,10 +70,10 @@ flowchart LR
 
 ```mermaid
 graph LR
-    TabBar --> Home[Home / Dashboard]
-    TabBar --> Products[Products Tab]
-    TabBar --> History[Transaction History]
-    TabBar --> Profile[Profile / Logout]
+    TabBar --> Home[🏠 Dashboard]
+    TabBar --> Products[📦 Products]
+    TabBar --> History[📋 Transactions]
+    TabBar --> Profile[👤 Profile]
 
     Products --> PList[Product List]
     Products --> PAdd[Add Product]

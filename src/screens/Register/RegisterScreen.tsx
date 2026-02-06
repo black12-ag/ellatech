@@ -46,14 +46,13 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
       >
-        {/* Gradient Header */}
+        {/* Header */}
         <View className="bg-indigo-600 pb-24 pt-20 items-center">
-          {/* Decorative circles */}
           <View className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10" />
           <View className="absolute bottom-10 -left-10 w-28 h-28 rounded-full bg-white/5" />
 
           <View className="w-24 h-24 rounded-3xl bg-white items-center justify-center shadow-2xl shadow-black/20 mb-5">
-            <Text className="text-5xl font-black text-indigo-600">E</Text>
+            <Text className="text-5xl">{"\u{1F4E6}"}</Text>
           </View>
           <Text className="text-3xl font-extrabold text-white tracking-tight">
             Ellatech
@@ -74,7 +73,7 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
 
           {error && (
             <View className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-5 flex-row items-center">
-              <Text className="text-lg mr-2">!</Text>
+              <Text className="text-lg mr-2">{"\u{26A0}\uFE0F"}</Text>
               <Text className="text-red-600 text-sm flex-1 font-medium">{error}</Text>
             </View>
           )}
@@ -84,7 +83,7 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
             Full Name
           </Text>
           <View className="flex-row items-center bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 mb-4">
-            <Text className="text-lg text-slate-400 mr-3">U</Text>
+            <Text className="text-lg mr-3">{"\u{1F464}"}</Text>
             <TextInput
               className="flex-1 py-4 text-base text-slate-800"
               placeholder="Enter your full name"
@@ -100,7 +99,7 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
             Email Address
           </Text>
           <View className="flex-row items-center bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 mb-7">
-            <Text className="text-lg text-slate-400 mr-3">@</Text>
+            <Text className="text-lg mr-3">{"\u{2709}\uFE0F"}</Text>
             <TextInput
               className="flex-1 py-4 text-base text-slate-800"
               placeholder="you@example.com"
@@ -114,7 +113,7 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
 
           {/* Submit */}
           <TouchableOpacity
-            className={`rounded-2xl py-4.5 items-center shadow-lg shadow-indigo-500/30 ${
+            className={`rounded-2xl py-4 items-center ${
               loading ? "bg-indigo-400" : "bg-indigo-600"
             }`}
             onPress={handleRegister}
@@ -128,8 +127,8 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
                 <Text className="text-white font-bold text-lg">
                   Get Started
                 </Text>
-                <Text className="text-white text-lg ml-2 font-bold">
-                  {" ->"}
+                <Text className="text-white text-lg ml-2">
+                  {"\u{1F680}"}
                 </Text>
               </View>
             )}
@@ -139,12 +138,12 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
         {/* Feature pills */}
         <View className="flex-row justify-center mt-7 flex-wrap gap-3 px-6">
           {[
-            { icon: "[ ]", label: "Track Products", bg: "bg-emerald-50", text: "text-emerald-600" },
-            { icon: "//", label: "Real-time Stats", bg: "bg-blue-50", text: "text-blue-600" },
-            { icon: "*", label: "Stock Control", bg: "bg-violet-50", text: "text-violet-600" },
+            { icon: "\u{1F4E6}", label: "Track Products", bg: "bg-emerald-50", text: "text-emerald-600" },
+            { icon: "\u{1F4CA}", label: "Real-time Stats", bg: "bg-blue-50", text: "text-blue-600" },
+            { icon: "\u{2705}", label: "Stock Control", bg: "bg-violet-50", text: "text-violet-600" },
           ].map((pill) => (
             <View key={pill.label} className={`flex-row items-center ${pill.bg} px-4 py-2.5 rounded-full`}>
-              <Text className={`${pill.text} text-xs font-bold mr-1.5`}>{pill.icon}</Text>
+              <Text className="text-sm mr-1.5">{pill.icon}</Text>
               <Text className={`${pill.text} text-xs font-semibold`}>{pill.label}</Text>
             </View>
           ))}

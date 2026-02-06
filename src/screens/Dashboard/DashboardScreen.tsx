@@ -31,33 +31,34 @@ export const DashboardScreen: React.FC<Props> = ({
       {/* Stats Grid */}
       <View className="px-5 -mt-6">
         <View className="flex-row gap-3 mb-3">
-          <View className="flex-1 bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100">
-            <View className="w-10 h-10 rounded-xl bg-indigo-50 items-center justify-center mb-3">
-              <Text className="text-indigo-600 font-black text-sm">P</Text>
-            </View>
-            <Text className="text-slate-400 text-xs font-semibold uppercase tracking-wide">
+          {/* Products */}
+          <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
+            <Text className="text-2xl mb-2">{"\u{1F4E6}"}</Text>
+            <Text className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
               Products
             </Text>
-            <Text className="text-slate-900 text-3xl font-extrabold mt-1">{totalProducts}</Text>
+            <Text className="text-slate-900 text-3xl font-extrabold mt-1">
+              {totalProducts}
+            </Text>
           </View>
 
-          <View className="flex-1 bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100">
-            <View className="w-10 h-10 rounded-xl bg-emerald-50 items-center justify-center mb-3">
-              <Text className="text-emerald-600 font-black text-sm">#</Text>
-            </View>
-            <Text className="text-slate-400 text-xs font-semibold uppercase tracking-wide">
+          {/* Total Stock */}
+          <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
+            <Text className="text-2xl mb-2">{"\u{1F3F7}\uFE0F"}</Text>
+            <Text className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
               Total Stock
             </Text>
-            <Text className="text-slate-900 text-3xl font-extrabold mt-1">{totalStock}</Text>
+            <Text className="text-slate-900 text-3xl font-extrabold mt-1">
+              {totalStock}
+            </Text>
           </View>
         </View>
 
         <View className="flex-row gap-3">
-          <View className="flex-1 bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100">
-            <View className="w-10 h-10 rounded-xl bg-amber-50 items-center justify-center mb-3">
-              <Text className="text-amber-600 font-black text-sm">$</Text>
-            </View>
-            <Text className="text-slate-400 text-xs font-semibold uppercase tracking-wide">
+          {/* Total Value */}
+          <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
+            <Text className="text-2xl mb-2">{"\u{1F4B0}"}</Text>
+            <Text className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
               Total Value
             </Text>
             <Text className="text-indigo-600 text-2xl font-extrabold mt-1">
@@ -65,15 +66,16 @@ export const DashboardScreen: React.FC<Props> = ({
             </Text>
           </View>
 
-          <View className="flex-1 bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100">
-            <View className="w-10 h-10 rounded-xl bg-red-50 items-center justify-center mb-3">
-              <Text className="text-red-500 font-black text-sm">!</Text>
-            </View>
-            <Text className="text-slate-400 text-xs font-semibold uppercase tracking-wide">
+          {/* Low Stock */}
+          <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
+            <Text className="text-2xl mb-2">{"\u{26A0}\uFE0F"}</Text>
+            <Text className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
               Low Stock
             </Text>
             <Text
-              className={`text-3xl font-extrabold mt-1 ${lowStock > 0 ? "text-red-500" : "text-emerald-500"}`}
+              className={`text-3xl font-extrabold mt-1 ${
+                lowStock > 0 ? "text-red-500" : "text-emerald-500"
+              }`}
             >
               {lowStock}
             </Text>
@@ -83,15 +85,17 @@ export const DashboardScreen: React.FC<Props> = ({
 
       {/* Quick Actions */}
       <View className="px-5 mt-7">
-        <Text className="text-slate-900 text-lg font-extrabold mb-3">Quick Actions</Text>
+        <Text className="text-slate-900 text-lg font-extrabold mb-3">
+          Quick Actions
+        </Text>
 
         <TouchableOpacity
-          className="bg-indigo-600 rounded-2xl p-5 mb-3 flex-row items-center shadow-lg shadow-indigo-500/20"
+          className="bg-indigo-600 rounded-2xl p-5 mb-3 flex-row items-center"
           onPress={onNavigateProducts}
           activeOpacity={0.85}
         >
-          <View className="w-12 h-12 rounded-xl bg-white/20 items-center justify-center mr-4">
-            <Text className="text-white text-xl font-extrabold">+</Text>
+          <View className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center mr-4">
+            <Text className="text-xl">{"\u{2795}"}</Text>
           </View>
           <View className="flex-1">
             <Text className="text-white font-bold text-base">Add Product</Text>
@@ -99,7 +103,7 @@ export const DashboardScreen: React.FC<Props> = ({
               Register a new inventory item
             </Text>
           </View>
-          <Text className="text-white/60 font-bold text-lg">{"->"}</Text>
+          <Text className="text-white/50 text-lg">{"\u{203A}"}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -107,8 +111,8 @@ export const DashboardScreen: React.FC<Props> = ({
           onPress={onNavigateHistory}
           activeOpacity={0.85}
         >
-          <View className="w-12 h-12 rounded-xl bg-slate-100 items-center justify-center mr-4">
-            <Text className="text-slate-600 text-lg font-extrabold">=</Text>
+          <View className="w-12 h-12 rounded-2xl bg-slate-50 items-center justify-center mr-4">
+            <Text className="text-xl">{"\u{1F4CB}"}</Text>
           </View>
           <View className="flex-1">
             <Text className="text-slate-900 font-bold text-base">
@@ -118,7 +122,7 @@ export const DashboardScreen: React.FC<Props> = ({
               {transactions.length} total transactions
             </Text>
           </View>
-          <Text className="text-slate-300 font-bold text-lg">{"->"}</Text>
+          <Text className="text-slate-300 text-lg">{"\u{203A}"}</Text>
         </TouchableOpacity>
       </View>
 

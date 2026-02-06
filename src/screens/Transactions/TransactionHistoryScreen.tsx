@@ -35,19 +35,15 @@ export const TransactionHistoryScreen: React.FC = () => {
   const hasMore = paginated.length < transactions.length;
 
   const renderItem = ({ item }: { item: Transaction }) => (
-    <View className="bg-white rounded-2xl p-4 mb-3 mx-5 border border-slate-100 shadow-sm shadow-slate-100">
+    <View className="bg-white rounded-2xl p-4 mb-3 mx-5 border border-slate-100">
       <View className="flex-row items-center">
         <View
           className={`w-10 h-10 rounded-full items-center justify-center mr-3 ${
             item.type === "remove" ? "bg-red-50" : "bg-emerald-50"
           }`}
         >
-          <Text
-            className={`font-extrabold text-base ${
-              item.type === "remove" ? "text-red-500" : "text-emerald-500"
-            }`}
-          >
-            {item.type === "remove" ? "-" : "+"}
+          <Text className="text-base">
+            {item.type === "remove" ? "\u{1F53D}" : "\u{1F53C}"}
           </Text>
         </View>
 
@@ -75,7 +71,7 @@ export const TransactionHistoryScreen: React.FC = () => {
 
       <View className="mt-3 pt-3 border-t border-slate-50 flex-row">
         <Text className="text-slate-400 text-xs font-medium flex-1">
-          Qty: {item.previousQuantity} {"->"} {item.newQuantity}
+          Qty: {item.previousQuantity} {"\u{2192}"} {item.newQuantity}
         </Text>
       </View>
     </View>
@@ -83,9 +79,7 @@ export const TransactionHistoryScreen: React.FC = () => {
 
   const EmptyList = () => (
     <View className="items-center justify-center pt-24 px-10">
-      <View className="w-20 h-20 rounded-3xl bg-slate-100 items-center justify-center mb-5">
-        <Text className="text-slate-400 text-3xl font-extrabold">=</Text>
-      </View>
+      <Text className="text-6xl mb-5">{"\u{1F4CB}"}</Text>
       <Text className="text-slate-900 text-xl font-extrabold text-center">
         No Transactions Yet
       </Text>
@@ -98,16 +92,17 @@ export const TransactionHistoryScreen: React.FC = () => {
   const Footer = () =>
     hasMore ? (
       <TouchableOpacity
-        className="mx-5 mb-6 py-3.5 bg-indigo-50 rounded-2xl items-center"
+        className="mx-5 mb-6 py-3.5 bg-indigo-50 rounded-2xl items-center flex-row justify-center"
         onPress={() => setPage((p) => p + 1)}
         activeOpacity={0.8}
       >
+        <Text className="mr-2">{"\u{1F504}"}</Text>
         <Text className="text-indigo-600 font-bold text-sm">Load More</Text>
       </TouchableOpacity>
     ) : transactions.length > 0 ? (
       <View className="items-center mb-6 py-3">
         <Text className="text-slate-300 text-xs font-medium">
-          All {transactions.length} transactions shown
+          {"\u{2705}"} All {transactions.length} transactions shown
         </Text>
       </View>
     ) : null;
@@ -116,10 +111,15 @@ export const TransactionHistoryScreen: React.FC = () => {
     <View className="flex-1 bg-slate-50">
       {/* Header */}
       <View className="bg-indigo-600 pt-14 pb-7 px-5">
-        <Text className="text-white text-2xl font-extrabold">Transactions</Text>
-        <Text className="text-indigo-200 text-sm mt-1 font-medium">
-          {transactions.length} total stock change{transactions.length !== 1 ? "s" : ""}
-        </Text>
+        <View className="flex-row items-center">
+          <Text className="text-2xl mr-3">{"\u{1F4CB}"}</Text>
+          <View>
+            <Text className="text-white text-2xl font-extrabold">Transactions</Text>
+            <Text className="text-indigo-200 text-sm mt-0.5 font-medium">
+              {transactions.length} total stock change{transactions.length !== 1 ? "s" : ""}
+            </Text>
+          </View>
+        </View>
       </View>
 
       <FlatList

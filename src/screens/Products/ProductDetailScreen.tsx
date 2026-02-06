@@ -39,6 +39,7 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
   if (!product) {
     return (
       <View className="flex-1 bg-slate-50 items-center justify-center px-8">
+        <Text className="text-4xl mb-4">{"\u{1F50D}"}</Text>
         <Text className="text-slate-400 text-lg font-semibold">Product not found</Text>
         <TouchableOpacity
           className="mt-5 bg-indigo-600 rounded-xl px-6 py-3"
@@ -53,16 +54,16 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
   const handleAdjust = () => {
     const qty = parseInt(adjustQty, 10);
     if (!adjustQty.trim() || isNaN(qty) || qty <= 0) {
-      Alert.alert("Invalid Input", "Enter a quantity greater than 0");
+      Alert.alert("\u{26A0}\uFE0F Invalid Input", "Enter a quantity greater than 0");
       return;
     }
     const result = adjustStock(productId, adjustType, qty);
     if (!result.success) {
-      Alert.alert("Error", result.error ?? "Failed to adjust stock");
+      Alert.alert("\u{274C} Error", result.error ?? "Failed to adjust stock");
       return;
     }
     Alert.alert(
-      "Stock Updated",
+      "\u{2705} Stock Updated",
       `${adjustType === "add" ? "Added" : "Removed"} ${qty} unit${qty > 1 ? "s" : ""} successfully`,
     );
     setAdjustQty("");
@@ -77,7 +78,8 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
           activeOpacity={0.7}
           className="flex-row items-center mb-3"
         >
-          <Text className="text-indigo-200 text-base font-semibold">{"<-"} Back</Text>
+          <Text className="text-lg mr-1">{"\u{2190}"}</Text>
+          <Text className="text-indigo-200 text-base font-semibold">Back</Text>
         </TouchableOpacity>
         <Text className="text-white text-2xl font-extrabold">{product.name}</Text>
         <View className="bg-white/15 self-start px-3 py-1 rounded-lg mt-2">
@@ -87,10 +89,13 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
 
       {/* Status Card */}
       <View className="px-5 -mt-4">
-        <View className="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100 mb-4">
-          <Text className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-4">
-            Product Status
-          </Text>
+        <View className="bg-white rounded-2xl p-5 border border-slate-100 mb-4">
+          <View className="flex-row items-center mb-4">
+            <Text className="text-base mr-2">{"\u{1F4CA}"}</Text>
+            <Text className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+              Product Status
+            </Text>
+          </View>
 
           <View className="flex-row mb-4">
             <View className="flex-1">
@@ -138,39 +143,48 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
 
       {/* Adjust Stock */}
       <View className="px-5 mb-6">
-        <Text className="text-slate-900 text-lg font-extrabold mb-3">Adjust Stock</Text>
+        <View className="flex-row items-center mb-3">
+          <Text className="text-base mr-2">{"\u{1F504}"}</Text>
+          <Text className="text-slate-900 text-lg font-extrabold">Adjust Stock</Text>
+        </View>
 
-        <View className="bg-white rounded-2xl p-5 shadow-sm shadow-slate-200 border border-slate-100">
+        <View className="bg-white rounded-2xl p-5 border border-slate-100">
           {/* Type Toggle */}
           <View className="flex-row bg-slate-100 rounded-xl p-1 mb-4">
             <TouchableOpacity
-              className={`flex-1 py-3 rounded-lg items-center ${
-                adjustType === "add" ? "bg-emerald-500 shadow-sm shadow-emerald-500/30" : ""
+              className={`flex-1 py-3 rounded-lg items-center flex-row justify-center ${
+                adjustType === "add" ? "bg-emerald-500" : ""
               }`}
               onPress={() => setAdjustType("add")}
               activeOpacity={0.8}
             >
+              <Text className={`mr-1 ${adjustType === "add" ? "" : "opacity-40"}`}>
+                {"\u{2795}"}
+              </Text>
               <Text
                 className={`font-bold ${
                   adjustType === "add" ? "text-white" : "text-slate-400"
                 }`}
               >
-                + Add Stock
+                Add Stock
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              className={`flex-1 py-3 rounded-lg items-center ${
-                adjustType === "remove" ? "bg-red-500 shadow-sm shadow-red-500/30" : ""
+              className={`flex-1 py-3 rounded-lg items-center flex-row justify-center ${
+                adjustType === "remove" ? "bg-red-500" : ""
               }`}
               onPress={() => setAdjustType("remove")}
               activeOpacity={0.8}
             >
+              <Text className={`mr-1 ${adjustType === "remove" ? "" : "opacity-40"}`}>
+                {"\u{2796}"}
+              </Text>
               <Text
                 className={`font-bold ${
                   adjustType === "remove" ? "text-white" : "text-slate-400"
                 }`}
               >
-                - Remove
+                Remove
               </Text>
             </TouchableOpacity>
           </View>
@@ -186,14 +200,15 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
           />
 
           <TouchableOpacity
-            className={`rounded-2xl py-4 items-center shadow-lg ${
-              adjustType === "add"
-                ? "bg-emerald-500 shadow-emerald-500/30"
-                : "bg-red-500 shadow-red-500/30"
+            className={`rounded-2xl py-4 items-center flex-row justify-center ${
+              adjustType === "add" ? "bg-emerald-500" : "bg-red-500"
             }`}
             onPress={handleAdjust}
             activeOpacity={0.85}
           >
+            <Text className="mr-2">
+              {adjustType === "add" ? "\u{2795}" : "\u{2796}"}
+            </Text>
             <Text className="text-white font-bold text-base">
               {adjustType === "add" ? "Add to Stock" : "Remove from Stock"}
             </Text>
@@ -204,7 +219,10 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
       {/* Product Transaction History */}
       {productTxns.length > 0 && (
         <View className="px-5 mb-8">
-          <Text className="text-slate-900 text-lg font-extrabold mb-3">History</Text>
+          <View className="flex-row items-center mb-3">
+            <Text className="text-base mr-2">{"\u{1F4CB}"}</Text>
+            <Text className="text-slate-900 text-lg font-extrabold">History</Text>
+          </View>
           {productTxns.map((txn) => (
             <View
               key={txn.id}
@@ -215,10 +233,8 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
                   txn.type === "remove" ? "bg-red-50" : "bg-emerald-50"
                 }`}
               >
-                <Text className={`font-extrabold ${
-                  txn.type === "remove" ? "text-red-500" : "text-emerald-500"
-                }`}>
-                  {txn.type === "remove" ? "-" : "+"}
+                <Text className="text-base">
+                  {txn.type === "remove" ? "\u{1F53D}" : "\u{1F53C}"}
                 </Text>
               </View>
               <View className="flex-1">
@@ -243,7 +259,7 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
                   {txn.quantity}
                 </Text>
                 <Text className="text-slate-400 text-[10px] font-medium">
-                  {txn.previousQuantity} {"->"} {txn.newQuantity}
+                  {txn.previousQuantity} {"\u{2192}"} {txn.newQuantity}
                 </Text>
               </View>
             </View>
