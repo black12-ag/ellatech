@@ -40,6 +40,12 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
 
     if (!result.success) { setError(result.error ?? "Failed to add product"); return; }
 
+    // Clear form fields after successful addition
+    setSku("");
+    setName("");
+    setPrice("");
+    setQuantity("");
+
     showAlert(
       "\u{2705} Product Added",
       `"${name.trim()}" has been added to your inventory.`,
