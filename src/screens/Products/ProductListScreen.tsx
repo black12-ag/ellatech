@@ -33,7 +33,8 @@ export const ProductListScreen: React.FC<Props> = ({
 
   const renderItem = ({ item }: { item: Product }) => (
     <TouchableOpacity
-      className="bg-white rounded-2xl p-4 mb-3 mx-5 border border-slate-100 active:scale-[0.98]"
+      className="bg-white rounded-2xl p-4 mb-3 border border-slate-100 active:scale-[0.98]"
+      style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
       onPress={() => onViewProduct(item.id)}
       activeOpacity={0.8}
     >
@@ -66,7 +67,10 @@ export const ProductListScreen: React.FC<Props> = ({
   );
 
   const EmptyList = () => (
-    <View className="items-center justify-center pt-24 px-10">
+    <View
+      className="items-center justify-center pt-24 px-10"
+      style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+    >
       <Text className="text-6xl mb-5">{"\u{1F4E6}"}</Text>
       <Text className="text-slate-900 text-xl font-extrabold text-center">
         No Products Yet
@@ -89,7 +93,10 @@ export const ProductListScreen: React.FC<Props> = ({
     <View className="flex-1 bg-slate-50">
       {/* Header */}
       <View className="bg-indigo-600 pt-14 pb-7 px-5">
-        <View className="flex-row items-center justify-between mb-4">
+        <View
+          className="flex-row items-center justify-between mb-4"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           <Text className="text-white text-2xl font-extrabold">Products</Text>
           <TouchableOpacity
             className="bg-white rounded-xl px-5 py-2.5 flex-row items-center"
@@ -102,7 +109,10 @@ export const ProductListScreen: React.FC<Props> = ({
         </View>
 
         {/* Search Bar */}
-        <View className="flex-row items-center bg-white/15 rounded-2xl px-4">
+        <View
+          className="flex-row items-center bg-white/15 rounded-2xl px-4"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           <Text className="mr-3 text-base">{"\u{1F50D}"}</Text>
           <TextInput
             className="flex-1 py-3.5 text-base text-white"
@@ -121,7 +131,10 @@ export const ProductListScreen: React.FC<Props> = ({
 
       {/* Product count */}
       {products.length > 0 && (
-        <View className="px-6 pt-4 pb-1">
+        <View
+          className="px-6 pt-4 pb-1"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           <Text className="text-slate-400 text-xs font-semibold uppercase tracking-wide">
             {filtered.length} product{filtered.length !== 1 ? "s" : ""}
             {search ? " found" : " total"}
@@ -133,7 +146,7 @@ export const ProductListScreen: React.FC<Props> = ({
         data={filtered}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        contentContainerStyle={{ paddingTop: 8, paddingBottom: 24 }}
+        contentContainerStyle={{ paddingTop: 8, paddingBottom: 24, paddingHorizontal: 20 }}
         ListEmptyComponent={<EmptyList />}
         showsVerticalScrollIndicator={false}
       />

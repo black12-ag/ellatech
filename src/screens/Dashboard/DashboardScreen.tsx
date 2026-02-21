@@ -22,15 +22,20 @@ export const DashboardScreen: React.FC<Props> = ({
     <ScrollView className="flex-1 bg-slate-50" showsVerticalScrollIndicator={false}>
       {/* Greeting header */}
       <View className="bg-indigo-600 pt-14 pb-10 px-6">
-        <Text className="text-indigo-200 text-sm font-medium">Welcome back,</Text>
-        <Text className="text-white text-2xl font-extrabold mt-1">
-          {user?.fullName ?? "User"}
-        </Text>
+        <View style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}>
+          <Text className="text-indigo-200 text-sm font-medium text-center">Welcome back,</Text>
+          <Text className="text-white text-2xl font-extrabold mt-1 text-center">
+            {user?.fullName ?? "User"}
+          </Text>
+        </View>
       </View>
 
       {/* Stats Grid */}
       <View className="px-5 -mt-6">
-        <View className="flex-row gap-3 mb-3">
+        <View
+          className="flex-row gap-3 mb-3"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           {/* Products */}
           <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
             <Text className="text-2xl mb-2">{"\u{1F4E6}"}</Text>
@@ -54,7 +59,10 @@ export const DashboardScreen: React.FC<Props> = ({
           </View>
         </View>
 
-        <View className="flex-row gap-3">
+        <View
+          className="flex-row gap-3"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           {/* Total Value */}
           <View className="flex-1 bg-white rounded-2xl p-5 border border-slate-100">
             <Text className="text-2xl mb-2">{"\u{1F4B0}"}</Text>
@@ -85,12 +93,16 @@ export const DashboardScreen: React.FC<Props> = ({
 
       {/* Quick Actions */}
       <View className="px-5 mt-7">
-        <Text className="text-slate-900 text-lg font-extrabold mb-3">
+        <Text
+          className="text-slate-900 text-lg font-extrabold mb-3"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           Quick Actions
         </Text>
 
         <TouchableOpacity
           className="bg-indigo-600 rounded-2xl p-5 mb-3 flex-row items-center"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
           onPress={onNavigateProducts}
           activeOpacity={0.85}
         >
@@ -108,6 +120,7 @@ export const DashboardScreen: React.FC<Props> = ({
 
         <TouchableOpacity
           className="bg-white border-2 border-slate-100 rounded-2xl p-5 mb-3 flex-row items-center"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
           onPress={onNavigateHistory}
           activeOpacity={0.85}
         >
@@ -129,13 +142,17 @@ export const DashboardScreen: React.FC<Props> = ({
       {/* Recent Products */}
       {products.length > 0 && (
         <View className="px-5 mt-5 mb-8">
-          <Text className="text-slate-900 text-lg font-extrabold mb-3">
+          <Text
+            className="text-slate-900 text-lg font-extrabold mb-3"
+            style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+          >
             Recent Products
           </Text>
           {products.slice(0, 3).map((p) => (
             <View
               key={p.id}
               className="bg-white rounded-2xl p-4 mb-2 flex-row items-center border border-slate-100"
+              style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
             >
               <View className="w-11 h-11 rounded-xl bg-indigo-50 items-center justify-center mr-3">
                 <Text className="text-indigo-700 font-extrabold text-xs">

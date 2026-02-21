@@ -24,8 +24,6 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
 
   const handleRegister = async () => {
     setError(null);
-    if (!fullName.trim()) { setError("Full name is required"); return; }
-    if (!email.trim()) { setError("Email is required"); return; }
 
     setLoading(true);
     await new Promise((r) => setTimeout(r, 600));
@@ -43,7 +41,7 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
     >
       <ScrollView
         className="flex-1 bg-slate-50"
-        contentContainerStyle={{ flexGrow: 1 }}
+        contentContainerStyle={{ flexGrow: 1, paddingBottom: 16 }}
         keyboardShouldPersistTaps="handled"
       >
         {/* Header */}
@@ -63,7 +61,10 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
         </View>
 
         {/* Form Card */}
-        <View className="mx-5 -mt-14 bg-white rounded-3xl p-7 shadow-2xl shadow-slate-900/10 border border-slate-100">
+        <View
+          className="mx-5 -mt-14 bg-white rounded-3xl p-7 shadow-2xl shadow-slate-900/10 border border-slate-100"
+          style={{ maxWidth: 520, width: "100%", alignSelf: "center" }}
+        >
           <Text className="text-2xl font-extrabold text-slate-900">
             Create Account
           </Text>
@@ -136,15 +137,22 @@ export const RegisterScreen: React.FC<Props> = ({ onSuccess }) => {
         </View>
 
         {/* Feature pills */}
-        <View className="flex-row justify-center mt-7 flex-wrap gap-3 px-6">
+        <View
+          className="flex-row justify-center mt-7 flex-wrap gap-3 px-6"
+          style={{ maxWidth: 560, width: "100%", alignSelf: "center" }}
+        >
           {[
-            { icon: "\u{1F4E6}", label: "Track Products", bg: "bg-emerald-50", text: "text-emerald-600" },
-            { icon: "\u{1F4CA}", label: "Real-time Stats", bg: "bg-blue-50", text: "text-blue-600" },
-            { icon: "\u{2705}", label: "Stock Control", bg: "bg-violet-50", text: "text-violet-600" },
+            { icon: "\u{1F4E6}", label: "Track Products", bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-100" },
+            { icon: "\u{1F4CA}", label: "Real-time Stats", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-100" },
+            { icon: "\u{2705}", label: "Stock Control", bg: "bg-violet-50", text: "text-violet-700", border: "border-violet-100" },
           ].map((pill) => (
-            <View key={pill.label} className={`flex-row items-center ${pill.bg} px-4 py-2.5 rounded-full`}>
-              <Text className="text-sm mr-1.5">{pill.icon}</Text>
-              <Text className={`${pill.text} text-xs font-semibold`}>{pill.label}</Text>
+            <View
+              key={pill.label}
+              className={`flex-row items-center justify-center ${pill.bg} ${pill.border} border px-4 py-3 rounded-full`}
+              style={{ minWidth: 164 }}
+            >
+              <Text className="text-base mr-1.5">{pill.icon}</Text>
+              <Text className={`${pill.text} text-sm font-bold`}>{pill.label}</Text>
             </View>
           ))}
         </View>

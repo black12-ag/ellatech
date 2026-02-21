@@ -7,9 +7,9 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Modal,
 } from "react-native";
 import { useApp } from "../../context/AppContext";
-import { showAlert } from "../../utils/alert";
 
 interface Props {
   onBack: () => void;
@@ -22,6 +22,8 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [lastAddedName, setLastAddedName] = useState("");
 
   const handleSubmit = () => {
     setError(null);
@@ -46,11 +48,8 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
     setPrice("");
     setQuantity("");
 
-    showAlert(
-      "\u{2705} Product Added",
-      `"${name.trim()}" has been added to your inventory.`,
-      onBack,
-    );
+    setLastAddedName(name.trim());
+    setShowSuccessModal(true);
   };
 
   return (
@@ -58,6 +57,47 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
       className="flex-1"
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <Modal
+        visible={showSuccessModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowSuccessModal(false)}
+      >
+        <View className="flex-1 bg-black/40 items-center justify-center px-5">
+          <View
+            className="bg-white rounded-3xl p-6 border border-slate-100 items-center"
+            style={{ maxWidth: 420, width: "100%" }}
+          >
+            <Text className="text-4xl mb-2">{"\u{2705}"}</Text>
+            <Text className="text-slate-900 text-xl font-extrabold text-center">
+              Product Added
+            </Text>
+            <Text className="text-slate-500 text-sm text-center mt-2">
+              "{lastAddedName}" has been added to your inventory.
+            </Text>
+            <View className="flex-row mt-5 gap-3">
+              <TouchableOpacity
+                className="bg-slate-100 rounded-xl px-4 py-3"
+                onPress={() => setShowSuccessModal(false)}
+                activeOpacity={0.85}
+              >
+                <Text className="text-slate-700 font-semibold">Add Another</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                className="bg-indigo-600 rounded-xl px-5 py-3"
+                onPress={() => {
+                  setShowSuccessModal(false);
+                  onBack();
+                }}
+                activeOpacity={0.85}
+              >
+                <Text className="text-white font-semibold">Done</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
       <ScrollView
         className="flex-1 bg-slate-50"
         contentContainerStyle={{ flexGrow: 1 }}
@@ -68,19 +108,26 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
           <TouchableOpacity
             onPress={onBack}
             activeOpacity={0.7}
-            className="flex-row items-center mb-3"
+            className="flex-row items-center mb-3 self-start"
+            style={{ maxWidth: 560, width: "100%", alignSelf: "center" }}
           >
             <Text className="text-lg mr-1">{"\u{2190}"}</Text>
             <Text className="text-indigo-200 text-base font-semibold">Back</Text>
           </TouchableOpacity>
-          <Text className="text-white text-2xl font-extrabold">Add Product</Text>
-          <Text className="text-indigo-200 text-sm mt-1 font-medium">
-            Register a new item in your inventory
-          </Text>
+          <View style={{ maxWidth: 560, width: "100%", alignSelf: "center" }}>
+            <Text className="text-white text-2xl font-extrabold text-center">Add Product</Text>
+            <Text className="text-indigo-200 text-sm mt-1 font-medium text-center">
+              Register a new item in your inventory
+            </Text>
+          </View>
         </View>
 
         {/* Form */}
         <View className="px-5 pt-6">
+          <View
+            className="bg-white rounded-3xl p-5 border border-slate-100"
+            style={{ maxWidth: 560, width: "100%", alignSelf: "center" }}
+          >
           {error && (
             <View className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-5 flex-row items-center">
               <Text className="text-lg mr-2">{"\u{26A0}\uFE0F"}</Text>
@@ -153,6 +200,7 @@ export const AddProductScreen: React.FC<Props> = ({ onBack }) => {
           >
             <Text className="text-slate-400 font-semibold text-sm">Cancel</Text>
           </TouchableOpacity>
+          </View>
         </View>
 
         <View className="h-10" />

@@ -37,3 +37,6 @@ yarn-error.*
 
 # Lock files (optional)
 # package-lock.json
+
+# Local Netlify folder
+.netlify

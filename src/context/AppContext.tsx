@@ -39,10 +39,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   /* ── user ─── */
   const registerUser = useCallback((email: string, fullName: string) => {
-    if (!email.includes("@")) return { success: false, error: "Invalid email address" };
-    if (fullName.trim().length < 2) return { success: false, error: "Name must be at least 2 characters" };
-
-    setUser({ id: uid(), email: email.trim(), fullName: fullName.trim(), createdAt: now() });
+    const normalizedEmail = email.trim() || "guest@local";
+    const normalizedName = fullName.trim() || "Guest User";
+    setUser({
+      id: uid(),
+      email: normalizedEmail,
+      fullName: normalizedName,
+      createdAt: now(),
+    });
     return { success: true };
   }, []);
 

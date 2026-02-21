@@ -73,23 +73,28 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
     <ScrollView className="flex-1 bg-slate-50" showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View className="bg-indigo-600 pt-14 pb-8 px-5">
-        <TouchableOpacity
-          onPress={onBack}
-          activeOpacity={0.7}
-          className="flex-row items-center mb-3"
-        >
-          <Text className="text-lg mr-1">{"\u{2190}"}</Text>
-          <Text className="text-indigo-200 text-base font-semibold">Back</Text>
-        </TouchableOpacity>
-        <Text className="text-white text-2xl font-extrabold">{product.name}</Text>
-        <View className="bg-white/15 self-start px-3 py-1 rounded-lg mt-2">
-          <Text className="text-white text-sm font-bold">SKU: {product.sku}</Text>
+        <View style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}>
+          <TouchableOpacity
+            onPress={onBack}
+            activeOpacity={0.7}
+            className="flex-row items-center mb-3 self-start"
+          >
+            <Text className="text-lg mr-1">{"\u{2190}"}</Text>
+            <Text className="text-indigo-200 text-base font-semibold">Back</Text>
+          </TouchableOpacity>
+          <Text className="text-white text-2xl font-extrabold text-center">{product.name}</Text>
+          <View className="bg-white/15 px-3 py-1 rounded-lg mt-2 self-center">
+            <Text className="text-white text-sm font-bold">SKU: {product.sku}</Text>
+          </View>
         </View>
       </View>
 
       {/* Status Card */}
       <View className="px-5 -mt-4">
-        <View className="bg-white rounded-2xl p-5 border border-slate-100 mb-4">
+        <View
+          className="bg-white rounded-2xl p-5 border border-slate-100 mb-4"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           <View className="flex-row items-center mb-4">
             <Text className="text-base mr-2">{"\u{1F4CA}"}</Text>
             <Text className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
@@ -143,12 +148,18 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
 
       {/* Adjust Stock */}
       <View className="px-5 mb-6">
-        <View className="flex-row items-center mb-3">
+        <View
+          className="flex-row items-center mb-3"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           <Text className="text-base mr-2">{"\u{1F504}"}</Text>
           <Text className="text-slate-900 text-lg font-extrabold">Adjust Stock</Text>
         </View>
 
-        <View className="bg-white rounded-2xl p-5 border border-slate-100">
+        <View
+          className="bg-white rounded-2xl p-5 border border-slate-100"
+          style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+        >
           {/* Type Toggle */}
           <View className="flex-row bg-slate-100 rounded-xl p-1 mb-4">
             <TouchableOpacity
@@ -219,7 +230,10 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
       {/* Product Transaction History */}
       {productTxns.length > 0 && (
         <View className="px-5 mb-8">
-          <View className="flex-row items-center mb-3">
+          <View
+            className="flex-row items-center mb-3"
+            style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+          >
             <Text className="text-base mr-2">{"\u{1F4CB}"}</Text>
             <Text className="text-slate-900 text-lg font-extrabold">History</Text>
           </View>
@@ -227,6 +241,7 @@ export const ProductDetailScreen: React.FC<Props> = ({ productId, onBack }) => {
             <View
               key={txn.id}
               className="bg-white rounded-xl p-4 mb-2 flex-row items-center border border-slate-100"
+              style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
             >
               <View
                 className={`w-10 h-10 rounded-full items-center justify-center mr-3 ${

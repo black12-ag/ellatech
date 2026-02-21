@@ -8,7 +8,7 @@ A React Native (Expo + NativeWind) inventory management app that simulates user 
 
 | Platform | Link |
 |----------|------|
-| **Web App** | [https://black12-ag.github.io/ellatech](https://black12-ag.github.io/ellatech) |
+| **Web App** | [https://ellatech-inventory-munir.netlify.app](https://ellatech-inventory-munir.netlify.app) |
 | **Expo Dashboard** | [https://expo.dev/accounts/muay01111/projects/ellatech-inventory](https://expo.dev/accounts/muay01111/projects/ellatech-inventory) |
 | **GitHub Repo** | [https://github.com/black12-ag/ellatech](https://github.com/black12-ag/ellatech) |
 

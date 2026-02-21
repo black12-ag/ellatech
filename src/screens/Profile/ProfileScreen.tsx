@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Linking } from "react-native";
 import { useApp } from "../../context/AppContext";
 import { showConfirm } from "../../utils/alert";
 
@@ -9,6 +9,7 @@ interface Props {
 
 export const ProfileScreen: React.FC<Props> = ({ onLogout }) => {
   const { user, products, transactions } = useApp();
+  const portfolioUrl = "https://ellatech-inventory-munir.netlify.app";
 
   const handleLogout = () => {
     showConfirm(
@@ -17,6 +18,13 @@ export const ProfileScreen: React.FC<Props> = ({ onLogout }) => {
       onLogout,
       "Log Out",
     );
+  };
+
+  const handleOpenPortfolio = async () => {
+    const supported = await Linking.canOpenURL(portfolioUrl);
+    if (supported) {
+      await Linking.openURL(portfolioUrl);
+    }
   };
 
   const formatDate = (iso: string) =>
@@ -39,7 +47,10 @@ export const ProfileScreen: React.FC<Props> = ({ onLogout }) => {
         </Text>
       </View>
 
-      <View className="px-5 mt-6">
+      <View
+        className="px-5 mt-6"
+        style={{ maxWidth: 620, width: "100%", alignSelf: "center" }}
+      >
         {/* Account Info */}
         <View className="bg-white rounded-2xl p-5 border border-slate-100 mb-4">
           <View className="flex-row items-center mb-4">
@@ -93,6 +104,15 @@ export const ProfileScreen: React.FC<Props> = ({ onLogout }) => {
         </View>
 
         {/* Logout */}
+        <TouchableOpacity
+          className="bg-white border-2 border-indigo-100 rounded-2xl py-4 items-center mb-3"
+          onPress={handleOpenPortfolio}
+          activeOpacity={0.8}
+        >
+          <Text className="text-indigo-600 font-bold text-base">Open Portfolio Link</Text>
+          <Text className="text-indigo-400 text-xs mt-1">{portfolioUrl}</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
           className="bg-red-50 border-2 border-red-100 rounded-2xl py-4 items-center flex-row justify-center"
           onPress={handleLogout}
