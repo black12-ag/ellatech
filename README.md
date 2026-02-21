@@ -1,5 +1,10 @@
 # Ellatech Inventory Management
 
+**Public Link**: [https://ellatech-inventory-munir.netlify.app](https://ellatech-inventory-munir.netlify.app)
+
+**Public Link**: [https://ellatech-inventory-munir.netlify.app](https://ellatech-inventory-munir.netlify.app)
+
+
 A React Native (Expo + NativeWind) inventory management app that simulates user registration, product management, stock adjustment, and transaction history — all powered by local state with no backend required.
 
 ## Live Demo
